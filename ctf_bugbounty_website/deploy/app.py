@@ -30,10 +30,35 @@ def admin():
                 return render_template("user.html", data=data)
 
             else:
-                return render_template("index.html", data="Wrong!")
+                return render_template("admin.html", data="Wrong!")
 
-        return render_template("index.html", data="Fill the input box", pre=1)
-    return render_template("index.html")
+        return render_template("admin.html", data="Fill the input box", pre=1)
+    return render_template("admin.html")
+
+
+@app.route("/report", methods=["GET"])
+def report():
+    # Get param parametert
+    param = request.args.get("param", "")
+    # Return report.html with param
+    if not param:
+        return render_template("report.html")
+    template = (
+        """
+        <html>
+            <head>
+                <title>Report</title>
+            </head>
+            <body>
+                <h1>Report</h1>
+                <p>Report: %s</p>
+                <p> Your report has been sent to admin. </p>
+            </body>
+        </html>
+    """
+        % param
+    )
+    return template
 
 
 @app.route("/memo")
@@ -44,5 +69,15 @@ def memo():
     return render_template("memo.html", memo=memo_text)
 
 
+@app.route("/tomcat")
+def tomcat():
+    return render_template("tomcat.html")
+
+
+@app.route("/apache")
+def apache():
+    return render_template("tomcat.html")
+
+
 if __name__ == "__main__":
-    app.run(host="0.0.0.0")
+    app.run(host="0.0.0.0", port=5000)

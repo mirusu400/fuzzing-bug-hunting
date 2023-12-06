@@ -22,4 +22,4 @@ CREATE TABLE fake_table_name (
   fake_col4 varchar(128) not null
 );
 
-INSERT INTO fake_table_name (fake_col1, fake_col2, fake_col3, fake_col4) values ('flag is ', 'DH{sam','ple','flag}');
+INSERT INTO fake_table_name (fake_col1, fake_col2, fake_col3, fake_col4) values ('This is secret message ', 'alskdnal','saldksnadkl','asdlkasn');
